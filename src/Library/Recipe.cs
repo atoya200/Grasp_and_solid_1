@@ -42,7 +42,7 @@ namespace Full_GRASP_And_SOLID.Library
 
 
         /* 
-            Como Recipe puede acceder o tiene la información de cada paso, teniendo este a su vez
+            Como Recipe puede acceder a la información de cada paso, teniendo este a su vez
             la información del subtotal o el total de ese paso, por Expert, la clase más 
             capacitada para calcular el costo completo es la de Recipe.
          */
