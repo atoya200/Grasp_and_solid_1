@@ -6,6 +6,7 @@
 
 using System;
 using System.Collections;
+using System.Text;
 
 namespace Full_GRASP_And_SOLID.Library
 {
@@ -14,6 +15,8 @@ namespace Full_GRASP_And_SOLID.Library
         private ArrayList steps = new ArrayList();
 
         public Product FinalProduct { get; set; }
+
+      
 
         public void AddStep(Step step)
         {
@@ -27,12 +30,32 @@ namespace Full_GRASP_And_SOLID.Library
 
         public void PrintRecipe()
         {
-            Console.WriteLine($"Receta de {this.FinalProduct.Description}:");
+            StringBuilder text = new StringBuilder($"Receta de {this.FinalProduct.Description}:");
             foreach (Step step in this.steps)
             {
-                Console.WriteLine($"{step.Quantity} de '{step.Input.Description}' " +
-                    $"usando '{step.Equipment.Description}' durante {step.Time}");
+                text.Append($"\n{step.Quantity}g de '{step.Input.Description}' " +
+                    $"usando '{step.Equipment.Description}' durante {step.Time} minutos");
             }
+            text.Append($"\nEl costo total de la producción de este alimento es de {GetProductionCost()} pesos"); 
+            Console.WriteLine(text);
         }
+
+
+        /* 
+            Como Recipe puede acceder o tiene la información de cada paso, teniendo este a su vez
+            la información del subtotal o el total de ese paso, por Expert, la clase más 
+            capacitada para calcular el costo completo es la de Recipe.
+         */
+
+         public double GetProductionCost()
+         {
+            double totalCost = 0;
+            foreach(Step var in this.steps)
+            {
+                totalCost += var.SubTotalStep();
+            }
+            return totalCost;
+
+         }
     }
 }
