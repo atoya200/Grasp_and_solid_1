@@ -25,9 +25,9 @@ namespace Full_GRASP_And_SOLID.Library
         public Equipment Equipment { get; set; }
 
         /* 
-            Step conoce a Equipment y conoce al Producto, entonces conoce:
+            Step conoce a Equipment y conoce al Producto, entonces conoce
             la cantidad de proudctos así como su precio unitario; en el caso del equipamiento, 
-            sabe cuanto sale usarlo una hora. Por ende, por Expert puede calcular un subtotal
+            sabe cuanto cuesta usarlo po una hora. Por ende, por Expert puede calcular un subtotal
             de cuanto cuesta ese paso, sumando el precio de la materia prima y el costo de usar
             el equipo.  
          */
